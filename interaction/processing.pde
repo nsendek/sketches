@@ -1,4 +1,4 @@
-import processing.pdf.*;
+//import processing.pdf.*;
 
 float RING_BOUNDARY;
 float BUFFER;
@@ -26,7 +26,7 @@ void setup() {
   VIEW_BOUNDARIES[1] = height;
   root = new RingChain();
   root.initialize(100);
-  frameRate(60);
+  frameRate(30);
 }
 
 void draw() { 
