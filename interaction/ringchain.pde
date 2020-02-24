@@ -1,7 +1,7 @@
 class RingChain {
   RingChain prev;
   RingChain next;
-  float strokeWeight = STROKE_WEIGHT;
+  float strokWeight = STROKE_WEIGHT;
   float maxSize = MAX_GROUP_SIZE;
   final ArrayList<Ring> rings = new ArrayList<Ring>();
   int size = 0;
@@ -70,7 +70,7 @@ class RingChain {
   }
   
   void draw() {
-    strokeWeight(this.strokeWeight);
+    strokeWeight(this.strokWeight);
     for(Ring r : this.rings) {
       r.draw();
     }

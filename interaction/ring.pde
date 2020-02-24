@@ -93,6 +93,7 @@ class Ring {
   
   void draw() { 
     stroke(this.col);
+    strokeWeight(1);
     noFill();
     circle(this.x,this.y,this.radius*2.0);
   }

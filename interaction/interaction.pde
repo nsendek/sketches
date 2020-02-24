@@ -25,8 +25,8 @@ void setup() {
   VIEW_BOUNDARIES[0] = width;
   VIEW_BOUNDARIES[1] = height;
   root = new RingChain();
-  root.initialize(100);
-  frameRate(30);
+  root.initialize(10);
+  frameRate(60);
 }
 
 void draw() { 
@@ -34,7 +34,6 @@ void draw() {
     saveFrame("pixel-######.png");
     beginRecord(PDF, "vector-####.pdf"); 
   }
-  
   if (showNegative) {
     background(0);
   } else {
@@ -67,7 +66,6 @@ void draw() {
     saveFrame("pixel-######.png");
       endRecord();
   }
-  
 }
 
 void keyPressed() {
