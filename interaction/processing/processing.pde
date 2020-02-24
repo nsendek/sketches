@@ -4,7 +4,7 @@ float RING_BOUNDARY;
 float BUFFER;
 int[] VIEW_BOUNDARIES = new int[2]; 
 int MAX_CHAIN_LINKS = 50;
-int MAX_GROUP_SIZE = 250;
+int MAX_GROUP_SIZE = 500;
 float STROKE_WEIGHT = 0.5;
 float GROWTH_CONSTANT = 1;
 float SPAWN_CONSTANT = 10;
@@ -30,6 +30,10 @@ void setup() {
 }
 
 void draw() { 
+  if (stopState) { 
+    saveFrame("pixel-######.png");
+    beginRecord(PDF, "vector-####.pdf"); 
+  }
   if (showNegative) {
     background(0);
   } else {
@@ -45,10 +49,11 @@ void draw() {
     chainLength = MAX_CHAIN_LINKS;
   }
   
+  if (showBoundary) {
     stroke(0);
     fill(10);
     circle(VIEW_BOUNDARIES[0]/2.,VIEW_BOUNDARIES[1]/2.,2*RING_BOUNDARY);
-  
+  }
   
   root.update();
   root.draw();
@@ -56,6 +61,11 @@ void draw() {
   println(root.size());
   println(root.length());
   println("");
+  
+  if (stopState) {
+    saveFrame("pixel-######.png");
+      endRecord();
+  }
 }
 
 void keyPressed() {
