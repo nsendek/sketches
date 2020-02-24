@@ -6,7 +6,7 @@ class ParticleSystem {
   PVector origin;
 
   ParticleSystem(PVector position) {
-    origin = new PVector(position.x,position.y);
+    origin = position.copy();
     particles = new ArrayList<Particle>();
   }
 
