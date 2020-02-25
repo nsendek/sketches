@@ -50,7 +50,6 @@ function draw() {
   
   //points
   drawCheckPoints();
-  pop();
   
 }
 
