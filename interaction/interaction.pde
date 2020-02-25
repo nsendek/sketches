@@ -3,7 +3,7 @@
 float RING_BOUNDARY;
 float BUFFER;
 int[] VIEW_BOUNDARIES = new int[2]; 
-int MAX_CHAIN_LINKS = 50;
+int MAX_CHAIN_LINKS = 20;
 int MAX_GROUP_SIZE = 250;
 float STROKE_WEIGHT = 0.5;
 float GROWTH_CONSTANT = 1;
@@ -18,60 +18,49 @@ boolean showNegative = false;
 RingChain root;
 
 void setup() {
-  //fullScreen();
-  size(900,750);
+  size(750,750);
   RING_BOUNDARY = height*0.4;
   BUFFER = 0.02*height;
   VIEW_BOUNDARIES[0] = width;
   VIEW_BOUNDARIES[1] = height;
   root = new RingChain();
-  root.initialize(10);
+  root.initialize(4);
   frameRate(60);
 }
 
 void draw() { 
-  if (showNegative) {
-    background(0);
-  } else {
-    background(255);
-  }
+  //println(root.height());
+
+  background(255);
  
-  int chainLength = root.length();
+  int chainLength = root.height();
   if (chainLength > MAX_CHAIN_LINKS) {
     int diff = chainLength - MAX_CHAIN_LINKS;
     for ( int i = 0; i <= diff; i ++) {
-      root = root.next;
+      root = root.getNext();
     }
     chainLength = MAX_CHAIN_LINKS;
   }
   
-    stroke(0);
-    fill(10);
-    circle(VIEW_BOUNDARIES[0]/2.,VIEW_BOUNDARIES[1]/2.,2*RING_BOUNDARY);
-  
-  
+  stroke(0);
+  fill(10);
+  ellipse(VIEW_BOUNDARIES[0]/2.,VIEW_BOUNDARIES[1]/2.,2*RING_BOUNDARY,2*RING_BOUNDARY);
+ 
   root.update();
   root.draw();
-  
-  println(root.size());
-  println(root.length());
-  println("");
+
 }
 
 void keyPressed() {
   if (key == ' ') {
     stopState = !stopState;
     if (stopState) {
-       noLoop(); 
+       noLoop();
        draw();
     } else {
        loop();
     }
-  } else if (key == 'b') {
-    showBoundary = !showBoundary;
-  } else if (key == 'n') {
-    showNegative = !showNegative;
-  }
+  } 
 }
 
 void keyReleased() {
@@ -90,10 +79,9 @@ void keyReleased() {
         root = root.next; 
       }
     } else if (keyCode == LEFT){
-       root.log();
-       println("");
+       //println("");
     } else if (keyCode == RIGHT){
-      println(root.length());
+      //println(root.length());
     }
   }
 }

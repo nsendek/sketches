@@ -3,7 +3,7 @@ class Ring {
   float velX = 0;
   float velY = 0;
   float terminalV = MAX_SPEED;
-  float growthFactor = height*random(1,GROWTH_CONSTANT)/100.;
+  float growthFactor = height*random(0,1)/100;
   color col;
   float radius = 0;
   float charge = 1;
@@ -31,7 +31,6 @@ class Ring {
     float midX =  VIEW_BOUNDARIES[0]/2.;
     float midY =  VIEW_BOUNDARIES[1]/2.;
     float distance = sqrt(sq(x - midX) + sq(y - midY));
-    
     return distance > RING_BOUNDARY;
   }
   
@@ -39,22 +38,15 @@ class Ring {
      float possX = this.x;
      float possY = this.y;
       if (!(mouseX <= 1) && !(mouseY <= 1))  {
-        if (this.x < mouseX) {
-          velX = min(terminalV,velX + charge*acceleration);
-          
-          possX += velX;
-        } else if (this.x > mouseX) {
-          velX = max(-1*terminalV,velX - charge*acceleration);
-          possX += velX;
-        }
-        
-       if (this.y < mouseY) {
-          velY = min(terminalV,velY + charge*acceleration);
-          possY += velY;
-        } else if (this.y > mouseY){
-          velY = max(-1*terminalV,velY - charge*acceleration);
-          possY += velY;
-        }
+       PVector push = new PVector(mouseX-this.x,mouseY-this.y);
+       float dist = push.mag();
+       push.mult(0.5);
+       push.mult(charge*acceleration/dist);
+       
+       velX = velX + push.x;
+       velY = velY + push.y;
+       possX += velX;
+       possY += velY; 
       }
       
       if(!outOfBounds(possX,possY)){
@@ -86,15 +78,20 @@ class Ring {
      if (!this.outOfBounds(mouseX,mouseY)) {
         this.mouseInteraction();      
       }
-
       this.grow();
     } 
   }
   
   void draw() { 
-    stroke(this.col);
-    strokeWeight(1);
-    noFill();
-    circle(this.x,this.y,this.radius*2.0);
+    float r = red(this.col);
+    float g = green(this.col);
+    float b = blue(this.col);
+    noStroke();
+    //stroke(this.col);
+    //strokeWeight(1);
+    //noFill();
+
+    fill(r,g,b,50);
+    ellipse(this.x,this.y,this.radius*2.0,this.radius*2.0);
   }
 }

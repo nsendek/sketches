@@ -3,7 +3,7 @@ class RingChain {
   RingChain next;
   float strokWeight = STROKE_WEIGHT;
   float maxSize = MAX_GROUP_SIZE;
-  final ArrayList<Ring> rings = new ArrayList<Ring>();
+  final ArrayList<Ring> rings = new ArrayList();
   int size = 0;
   
   RingChain () {}
@@ -20,14 +20,12 @@ class RingChain {
   
   void add(float x, float y) {
      color randomColor = color(random(255),random(255),random(255));
-
      this.rings.add(new Ring(x,y, randomColor));
      this.size++;
-
      if (this.rings.size() >= this.maxSize) {
        this.rings.remove(0);
        this.size--;
-     } 
+     }
   }
   
   void addRandom() {
@@ -47,26 +45,24 @@ class RingChain {
        this.rings.remove(0);
        this.size--;
      }
-     
+  }
+
+  RingChain getPrev() {
+    return this.prev;
   }
   
-  void log() {
-    print(Integer.toString(rings.size()) + " ");
-    if (this.next != null) {
-      this.next.log();
-    }
+  RingChain getNext() {
+    return this.next;
   }
   
   void update() {
    for(Ring r : this.rings) {
       r.update();
    }
-    
    collisions();
-    
    if (this.next != null) {
       this.next.update();
-   }  
+   }
   }
   
   void draw() {
@@ -80,18 +76,11 @@ class RingChain {
     }
   }
   
-  int length() {
-    if (this.next != null) {
-      return 1 + this.next.length();
+  int height() {
+    if (this.getNext() != null) {
+      return 1 + this.next.height();
     }
    return 1;
-  }
-  
-  int size() {
-   if (this.next != null) {
-      return this.size + this.next.size();
-    }
-   return this.size;
   }
   
   void collisions() {

@@ -1,12 +1,35 @@
 <html>
 <head>
-<title> My first webpage</title>
 <script language="javascript" type="text/javascript" src="processing.min.js"></script>
+<style> 
+body { 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 0; margin: 0; 
+    }
+canvas { 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    }
+ </style>
 </head>
  
-<body>
-Hello World!
-<marquee> this is a test!</marquee>
-<canvas data-processing-sources="ring.pde ringchain.pde interaction.pde"></canvas>
+<body id = "root">
+<canvas id = "canv" data-processing-sources="ring.pde ringchain.pde interaction.pde"></canvas>
+<script>
+    // console.log("RAN");
+    let object = document.getElementById("root");
+    object.onclick = null;
+    object = document.getElementById("can");
+    object.onclick = null;
+</script>
 </body>
 </html>
