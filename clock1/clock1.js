@@ -43,7 +43,7 @@ function draw() {
   var startAngle = radians(-90);
   var endAngle = radians(270);
   
-  background(255);
+  clear();
   translate(width/2, height/2);
   
   var hourAngle = map(hourVal + minuteVal/60,  0, 12,  startAngle, endAngle);

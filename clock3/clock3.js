@@ -36,7 +36,7 @@ function draw() {
      secDist = map(secondVal,  0, 60,  -diameter, 0);
    }
    
-   background(255);
+   clear();
    noStroke();
    translate(width/2,0);
    

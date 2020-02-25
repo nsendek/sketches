@@ -36,7 +36,7 @@ function draw() {
   
   millisVal = int(millisec - currentMillisec);
   
-  background(255);
+  clear();
   //text(formatTime(),30,20);
   translate(width/2,height/2);
   
