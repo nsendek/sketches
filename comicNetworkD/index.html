@@ -1,0 +1,61 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="libraries/autoComplete/autoComplete.css">
+  <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
+  <script language="javascript" type="text/javascript" src="libraries/p5.min.js"></script>
+  <script language="javascript" type="text/javascript" src="libraries/d3.min.js"></script>
+  <script language="javascript" type="text/javascript" src="Interact.js"></script>
+  <script language="javascript" type="text/javascript" src="Interval.js"></script>
+  <script language="javascript" type="text/javascript" src="IntervalTree.js"></script>
+  <script language="javascript" type="text/javascript" src="Network.js"></script>
+  <script language="javascript" type="text/javascript" src="axisStuff.js"></script>
+  <script language="javascript" type="text/javascript" src="d3Stuff.js"></script>
+  <script language="javascript" type="text/javascript" src="search.js"></script>
+  <script language="javascript" type="text/javascript" src="comicNetworkD.js"></script>
+  <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
+  
+  <style>
+  body { 
+  padding: 0; 
+  margin: 0; 
+  overflow: hidden
+  } 
+  svg { 
+    outline: none;
+    position:fixed; 
+    top:0; 
+    left:0; 
+    height:100%; 
+    width:100%;
+    z-index: 1;
+    -webkit-user-select: none;  /* Chrome 49+ */
+    -moz-user-select: none;     /* Firefox 43+ */
+    -ms-user-select: none;      /* No support yet */
+    user-select: none;
+ }
+
+ circle {
+    pointer-events: auto;
+    user-select: none;
+  }
+
+ canvas {
+   user-select: none;
+   z-index: 1;
+ } 
+ 
+  input {
+   z-index: 5 !important;
+  } 
+
+</style>
+</head>
+<body>
+<!-- <div class = 'autoComplete' >
+<input id="autoComplete"  tabindex="1">
+</div> -->
+<svg xmlns="http://www.w3.org/2000/svg"> </svg>
+</body>
+</html>
