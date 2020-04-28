@@ -1,9 +1,4 @@
-function init(heroes) {
-  d3.select("svg").call(d3.zoom()
-    .extent([[0, 0], [width, height]])
-    .scaleExtent([1, 7])
-    .on("zoom", zoomSVG));
-   
+function init(heroes) {    
   d3.select("svg")
     .append('g').attr('id', 'nodes')
     .selectAll('circle')
@@ -32,6 +27,11 @@ function init(heroes) {
     .attr('cx', o => o.pos.x)
     .attr('cy', o => o.pos.y);
     });
+    
+   d3.select("svg").call(d3.zoom()
+    .translateExtent([[0,0],[width,height]])
+    .scaleExtent([1, 7])
+    .on("zoom", zoomSVG));
 }
 
 function handleMouseOver(d) {
@@ -68,8 +68,9 @@ function D3() {
 }
  
 function zoomSVG() {
-    d3.select("svg").selectAll('circle').attr("transform", d3.event.transform);
-    zoomCanvas(d3.event.transform);
+    let transform = d3.event.transform;
+    d3.select("#nodes").selectAll('circle').attr("transform", transform);
+    zoomCanvas(transform);
 }
 
 function zoomCanvas(transform) {

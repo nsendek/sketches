@@ -3,6 +3,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="libraries/autoComplete/autoComplete.css">
+  <script language="javascript" type="text/javascript" src="libraries/autoComplete/autoComplete.min.js"></script>
   <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
   <script language="javascript" type="text/javascript" src="libraries/p5.min.js"></script>
   <script language="javascript" type="text/javascript" src="libraries/d3.min.js"></script>
@@ -34,28 +35,38 @@
     -moz-user-select: none;     /* Firefox 43+ */
     -ms-user-select: none;      /* No support yet */
     user-select: none;
- }
-
- circle {
-    pointer-events: auto;
-    user-select: none;
   }
 
- canvas {
-   user-select: none;
-   z-index: 1;
- } 
+  text {
+    z-index: 5;
+  }
+  
+  canvas {
+    user-select: none;
+    z-index: 1;
+  } 
  
   input {
-   z-index: 5 !important;
+   z-index: 5;
+  }
+  foreignObject {
+    z-index: 50;
+    
   } 
+  search {
+   input { 
+     z-index: 50;
+   }
+  }
 
 </style>
 </head>
 <body>
-<!-- <div class = 'autoComplete' >
-<input id="autoComplete"  tabindex="1">
-</div> -->
 <svg xmlns="http://www.w3.org/2000/svg"> </svg>
+<div class = "searchContainer">
+  <div id = "inputContainer">
+    <input id="autoComplete"> 
+  </div>
+</div>
 </body>
 </html>

@@ -12,24 +12,7 @@ class Interval {
   }
   
   intersect(other) {
-    return this.low <= other.high &&
-    this.high >= other.low;
-  }
-  
-  setMax() {
-   this.max =  this.left ? max(this.max, this.left.setMax()) : this.max;
-   this.max =  this.right ? max(this.max, this.right.setMax()) : this.max;
-   return this.max;
-  }
-  
-  depth() {
-    if (!this.left && !this.right) {
-      return 1;
-    }
-    let maxim = 0;
-    maxim = this.left ? this.left.depth() : 0;
-    maxim = this.right ? max(maxim, this.right.depth()) : maxim;
-    return maxim + 1;
+    return this.low <= other.high && this.high >= other.low;
   }
   
   compare(interval) {
@@ -43,6 +26,23 @@ class Interval {
      return 1;
    }
  }
+
+// interval tree related methods
+  setMax() {
+   this.max =  this.left ? max(this.max, this.left.setMax()) : this.max;
+   this.max =  this.right ? max(this.max, this.right.setMax()) : this.max;
+   return this.max;
+  }
+  
+  maxDepth() {
+    if (!this.left && !this.right) {
+      return 1;
+    }
+    let maxim = 0;
+    maxim = this.left ? this.left.maxDepth() : 0;
+    maxim = this.right ? max(maxim, this.right.maxDepth()) : maxim;
+    return maxim + 1;
+  } 
 }
 
 class ComicInterval extends Interval {

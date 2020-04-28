@@ -1,6 +1,5 @@
-const NODE_RADIUS = 2.5;
-const FLOOR = 3;
-const CEILING = 15;
+const NODE_FLOOR = 3;
+const NODE_CEILING = 16;
 
 class Node extends Object {
  constructor(id, n, thumb, x, y) {
@@ -19,8 +18,8 @@ class Node extends Object {
  getRadius() {
    let rad; 
    rad = map(this.degree, 1, 500, 1, 10);
-   rad = max(rad, FLOOR);
-   rad = min(rad, CEILING);
+   rad = max(rad, NODE_FLOOR);
+   rad = min(rad, NODE_CEILING);
    return rad;
  }
 }

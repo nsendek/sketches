@@ -1,44 +1,84 @@
-#autoComplete_wrapper {
+.searchContainer {
   position: absolute;
-  display: inline-block;
+  z-index : 500;
+  left: 80%;
+  top: 1%;
+  width: 16.5rem;
+}
+
+#inputContainer {
+  display: flex;
+  justify-content: flex-end;
 }
 
 #autoComplete {
-  position: relative;
-  padding: 0 2rem 0 3.5rem;
   height: 2.1rem;
   width: 6rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   outline: none;
   border-radius: 50rem;
-  border: 0.05rem solid rgb(248, 8, 8);
-  caret-color: rgb(248, 8, 8);
+  border: 0.1rem solid rgb(0, 0, 0);
+  caret-color: rgb(0, 0, 0);
   color: rgba(255, 255, 255, 0);
-  background-image: url(./magnifier.svg);
+  background-color: rgb(0, 0, 0, 0);
   background-repeat: no-repeat;
   background-size: 1.2rem;
   background-origin: border-box;
   background-position: center;
+  background-image: url(./magnifier.svg);
   transition: all 0.4s ease;
   -webkit-transition: all -webkit-transform 0.4s ease; 
   text-overflow: ellipsis;
 }
 
-#autoComplete::placeholder {
-  color: rgba(255, 122, 122, 0);
+#autoComplete:hover {
+  position: relative;
+  left: 0;
+  padding: 0 2rem 0 3.5rem;
+  color: rgb(0, 0, 0);
+  height: 3rem;
+  width: 16.5rem;
+  background-size: 1.7rem;
+  background-position: left 1.05rem top 0.7rem;
   transition: all 0.3s ease;
+  -webkit-transition: all -webkit-transform 0.3s ease;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px 5px;
+}
+
+#autoComplete:focus {
+  position: relative;
+  left: 0;
+  padding: 0 2rem 0 3.5rem;
+  color: rgb(0, 0, 0);
+  height: 3rem;
+  width: 16.5rem;
+  background-size: 1.5rem;
+  background-position: left 1.05rem top 0.8rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px 5px;
+}
+/* 
+#autoComplete:focus::selection {
+  float: none;
+  position: relative;
+  left: 0;
+} */
+
+#autoComplete::placeholder {
+  color: rgba(0, 0, 0, 0);
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
 }
 
 #autoComplete:hover::placeholder {
-  color: rgba(255, 122, 122, 0.3);
+
+  color: rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   -webkit-transition: all -webkit-transform 0.3s ease;
 }
 
 #autoComplete:focus::placeholder {
-  padding: 0.1rem 0.6rem;
-  font-size: 1rem;
-  color: rgba(255, 122, 122, 0.3);
+  padding: 0rem 0.5rem;
+  color: rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   -webkit-transition: all -webkit-transform 0.3s ease;
 }
@@ -47,60 +87,33 @@
   color: transparent;
 }
 
-#autoComplete:focus::selection {
-  color: #fff;
-  background-color: rgba(255, 122, 122, 1);
-}
-
-#autoComplete:hover {
-  padding: 0 2rem 0 3.5rem;
-  color: rgba(255, 122, 122, 1);
-  height: 3rem;
-  width: 16.5rem;
-  background-image: url(./magnifier.svg);
-  background-size: 1.7rem;
-  background-position: left 1.05rem top 0.7rem;
-  transition: all 0.3s ease;
-  -webkit-transition: all -webkit-transform 0.3s ease;
-}
-
-#autoComplete:focus {
-  padding: 0 2rem 0 3.5rem;
-  color: rgba(248, 8, 8, 1);
-  height: 3rem;
-  width: 16.5rem;
-  border: 0.05rem solid rgb(248, 8, 8);
-  background-image: url(./magnifier.svg);
-  background-size: 1.5rem;
-  background-position: left 1.05rem top 0.8rem;
-  box-shadow: rgba(255, 122, 122, 0.1) 0px 0px 20px 5px;
-}
-
-#autoComplete_list {
-  position: fixed;
-  z-index: 1000;
-  padding: 0;
-  left: 0;
-  right: 0;
-  margin-top: 0;
-  margin-left: auto;
-  margin-right: auto;
-  width: 18rem;
-  transition: all 0.1s ease-in-out;
-  -webkit-transition: all -webkit-transform 0.1s ease;
+#hero_list {
+  position: relative;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .autoComplete_result {
+  position: relative;
   margin: 0.15rem auto;
   padding: 0.6rem;
-  max-width: 280px;
+  max-width: 250px;
   border: 0.05rem solid #e3e3e3;
   list-style: none;
   text-align: left;
   font-size: 1.1rem;
-  color: rgb(123, 123, 123);
+  color: rgb(0, 0, 0);
   transition: all 0.1s ease-in-out;
-  background-color: #fff;
+}
+
+#autoComplete_list {
+  position: relative;
+  z-index: 1000;
+  padding: 0;
+  margin-top: 0;
+  width: 18rem;
+  transition: all 0.1s ease-in-out;
+  -webkit-transition: all -webkit-transform 0.1s ease;
 }
 
 .autoComplete_result::selection {
@@ -114,7 +127,7 @@
 
 .autoComplete_result:hover {
   cursor: pointer;
-  background-color: rgba(255, 248, 248, 0.9);
+  background-color: rgba(255, 248, 0, 0.9);
   border-left: 2px solid rgba(255, 122, 122, 1);
   border-right: 2px solid rgba(255, 122, 122, 1);
   border-top: 2px solid transparent;
@@ -194,6 +207,7 @@
     background-size: 1.2rem;
     background-origin: border-box;
     background-position: center;
+    
   }
 
   #autoComplete:hover {

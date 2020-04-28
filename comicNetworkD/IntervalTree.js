@@ -29,11 +29,7 @@ class AugmentedIntervalTree {
      }
      return count;    
   }
-  
-  maxDepth() {
-    return this.root.depth();
-  }
-  
+
   balance() {
    //balance tree
    let nodes = [];
@@ -57,10 +53,10 @@ class AugmentedIntervalTree {
         this.comicSet.add(node); 
         node.links.forEach(e => {this.linkSet.add(e);});
       }
-      //ignore left if max value < interval[0]
+      //ignore left if max_value < interval[0]
       if (node.left && node.left.max >= interval.low) {
          stack.push(node.left);
-      }//ignore right if min value > interval[1]
+      }//ignore right if min_value > interval[1]
       if (node.right && node.low <= interval.high) {
          stack.push(node.right);
       }
